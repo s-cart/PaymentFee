@@ -1,0 +1,1 @@
+The function to create costs incurred for each payment method
