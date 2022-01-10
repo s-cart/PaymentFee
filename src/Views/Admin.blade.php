@@ -21,6 +21,7 @@
                 <tr>
                   <th width="40%">{{ sc_language_render($configKey.'.payment_method') }}</th>
                   <th width="40%">{{ sc_language_render($configKey.'.amount') }}</th>
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,7 @@
                             <tr>
                               <td>{{ $method }}</td>
                               <td>{{ $amount }}</td>
+                              <td><span onClick="removeData($(this), '{{ $method }}');" title="{{ sc_language_render('action.remove') }}" class="btn btn-flat btn-danger btn-sm"><i class="fa fa-trash"></i></span></td>
                             </tr>
                         @endforeach
                     @endif
@@ -60,7 +62,7 @@
 <!-- Ediable -->
 <script src="{{ sc_file('admin/plugin/bootstrap-editable.min.js')}}"></script>
 <script type="text/javascript">
-$(document).ready(function() {
+
   $('#add-item-button').click(function() {
     var htmlRender = '{!! $htmlRender !!}';
     $('#add-item').before(htmlRender);
@@ -90,7 +92,27 @@ $(document).ready(function() {
       });
   });
 
-});
+  function removeData(obj,key) {
+    $.ajax({
+            url:'{{ sc_route_admin('admin_payment_fee.remove') }}',
+            type:'post',
+            data: {
+              key:key,
+                _token: '{{ csrf_token() }}',
+            },
+            beforeSend: function(){
+                $('#loading').show();
+            },
+            success: function(result){
+              $('#loading').hide();
+                if(parseInt(result.error) ==0){
+                    location.reload();
+                }else{
+                  alertJs('error', result.msg);
+                }
+            }
+        });
+  }
 
 </script>
 
