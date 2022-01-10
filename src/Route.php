@@ -11,7 +11,7 @@ Route::group(
     function () {
         Route::post('/create', 'AdminController@postCreate')
             ->name('admin_payment_fee.create');
-        Route::post('/create', 'AdminController@removeRange')
+        Route::post('/remove', 'AdminController@removeMethod')
             ->name('admin_payment_fee.remove');
     }
 );

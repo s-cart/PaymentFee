@@ -74,7 +74,7 @@
       $('#add-item-button').prop('disabled', true);
       $('#add-item-button-save').button('loading');
       $.ajax({
-          url:'{{ route("admin_payment_fee.create") }}',
+          url:'{{ sc_route_admin('admin_payment_fee.create') }}',
           type:'post',
           dataType:'json',
           data:$('form#form-add-item').serialize(),

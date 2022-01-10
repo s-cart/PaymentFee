@@ -25,7 +25,7 @@ class AdminController extends RootAdminController
         return response()->json(['error' => 0, 'msg' => 'Success']);
     }
 
-    public function removeRange() {
+    public function removeMethod() {
         if (!request()->ajax()) {
             return response()->json(['error' => 1, 'msg' => sc_language_render('admin.method_not_allow')]);
         }
