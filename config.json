@@ -8,5 +8,5 @@
     "configCode": "Fee",
     "configKey": "PaymentFee",
     "version": "3.2",
-    "scartVersion": "7.1|7.2|8.0|8.1|8.2"
+    "scartVersion": "7.1|7.2|8.0|8.1|8.2|9.0"
 }
